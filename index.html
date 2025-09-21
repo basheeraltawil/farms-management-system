@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام إدارة المزارع الذكية - iRAMA </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --secondary-color: #7cb342;
+            --accent-color: #ff9800;
+            --light-color: #f1f8e9;
+            --dark-color: #1b5e20;
+            --text-color: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,138.7C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            margin-left: 1rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary-color);
+            position: relative;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: 0;
+            width: 100px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+        
+        h3 {
+            color: var(--dark-color);
+            margin: 1.5rem 0 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        h3 i {
+            margin-left: 0.5rem;
+            color: var(--accent-color);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        ul {
+            margin-bottom: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .feature {
+            background: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary-color);
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .feature:hover {
+            border-left-color: var(--accent-color);
+            transform: translateX(5px);
+        }
+        
+        .feature i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: inline-block;
+            padding: 0.5rem;
+            background: rgba(46, 125, 50, 0.1);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            line-height: 50px;
+        }
+        
+        .feature h4 {
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .screenshots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .screenshot {
+            background: linear-gradient(45deg, #f5f5f5, #e0e0e0);
+            height: 200px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #777;
+            font-weight: bold;
+            overflow: hidden;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .screenshot:hover {
+            transform: scale(1.03);
+        }
+        
+        .screenshot:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.05);
+        }
+        
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--secondary-color);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            width: 50%;
+            padding: 0 2rem 0 0;
+            clear: both;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding: 0 0 0 2rem;
+        }
+        
+        .timeline-content {
+            background: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .timeline-content:hover {
+            background: #e8f5e9;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: -8px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            box-shadow: 0 0 0 4px rgba(255, 152, 0, 0.2);
+        }
+        
+        .timeline-item:nth-child(even):before {
+            right: auto;
+            left: -8px;
+        }
+        
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--dark-color);
+        }
+        
+        input, textarea, select {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 2px rgba(124, 179, 66, 0.2);
+        }
+        
+        button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        button i {
+            margin-left: 0.5rem;
+        }
+        
+        button:hover {
+            background: var(--dark-color);
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            justify-content: center;
+        }
+        
+        .tech-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid #eee;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pricing-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--dark-color);
+            margin: 1rem 0;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            color: #777;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: right;
+        }
+        
+        .pricing-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .highlighted {
+            border: 2px solid var(--accent-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlighted:before {
+            content: 'الأكثر شهرة';
+            position: absolute;
+            top: 10px;
+            left: -25px;
+            background: var(--accent-color);
+            color: white;
+            padding: 0.2rem 2rem;
+            transform: rotate(-45deg);
+            font-size: 0.8rem;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline:before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 0;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+                padding-left: 70px;
+                padding-right: 0;
+            }
+            
+            .timeline-item:before {
+                right: auto;
+                left: 22px;
+            }
+            
+            .timeline-item:nth-child(even):before {
+                left: 22px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 4px;
+            box-shadow: var(--shadow);
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="notification" id="notification">
+        شكرًا لك! تم إرسال رسالتك بنجاح.
+    </div>
+
+    <header>
+        <div class="logo-container">
+            <i class="fas fa-seedling logo"></i>
+            <h1>iRAMA - نظام إدارة المزارع الذكية </h1>
+        </div>
+        <p class="subtitle">نظام سهل وذكي لزراعة النباتات في البيت والمزرعة الصغيرة - مع موقع إلكتروني وتطبيق هاتف</p>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <h2><i class="fas fa-info-circle"></i> ما هو نظام إدارة المزارع الذكية؟</h2>
+            <p>هذا النظام يساعدك في زراعة النباتات في بيتك أو في مزرعتك الصغيرة بطريقة سهلة وذكية. يتكون من جزئين أساسيين:</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-desktop"></i>
+                    <h4>موقع إلكتروني للمراقبة</h4>
+                    <p>يمكنك من خلاله مراقبة نباتاتك ومعرفة حالتها من أي مكان عبر الإنترنت.</p>
+                    <ul>
+                        <li>مشاهدة حالة النباتات فوراً</li>
+                        <li>تقارير مبسطة وسهلة الفهم</li>
+                        <li>إعدادات بسيطة</li>
+                    </ul>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h4>تطبيق الهاتف المحمول</h4>
+                    <p>تطبيق سهل الاستخدام لإدارة مزرعتك، طلب المنتجات، ومتابعة طلباتك.</p>
+                    <ul>
+                        <li>سهل الاستخدام على الهاتف</li>
+                        <li>تنبيهات فورية</li>
+                        <li>متوفر باللغة العربية</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-bullseye"></i> لماذا نحتاج هذا النظام؟</h3>
+            <ul>
+                <li>يجعل زراعة النباتات في البيت أسهل</li>
+                <li>يساعدك في الحصول على محصول أكبر وأفضل</li>
+                <li>يوفر عليك الوقت والجهد</li>
+                <li>يربطك مباشرة بالعملاء لبيع منتجاتك</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2><i class="fas fa-tachometer-alt"></i> الموقع الإلكتروني للمراقبة</h2>
+            <p>موقع سهل يساعدك في مراقبة نباتاتك ومزرعتك من أي مكان ووقت.</p>
+            
+            <h3><i class="fas fa-cogs"></i> ماذا يمكنك أن تفعل؟</h3>
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>مراقبة النباتات</h4>
+                    <p>مشاهدة حالة نباتاتك والجو المحيط بها مثل درجة الحرارة والرطوبة.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-sliders-h"></i>
+                    <h4>التحكم في الري والإضاءة</h4>
+                    <p>تشغيل وإيقاف الري والإضاءة تلقائياً أو حسب رغبتك.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-calendar"></i>
+                    <h4>جدولة أعمال الزراعة</h4>
+                    <p>تذكيرك بمواعيد الزراعة والحصاد وأعمال العناية بالنباتات.</p>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-chart-pie"></i>
+                    <h4>تقارير بسيطة</h4>
+                    <p>معرفة كم حصلت من المحصول وكيف تحسن نتائجك.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-cog"></i>
+                    <h4>إعدادات مختلفة للنباتات</h4>
+                    <p>كل نوع نبات له إعدادات خاصة، والنظام يحفظها لك.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-bell"></i>
+                    <h4>تنبيهات مهمة</h4>
+                    <p>رسائل تنبهك عندما تحتاج النباتات لعناية أو عند وجود مشكلة.</p>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-laptop"></i> صور من الموقع</h3>
+            <div class="screenshots">
+                <div class="screenshot">شاشة مراقبة النباتات المنزلية</div>
+                <div class="screenshot">شاشة التحكم في المزرعة التجارية</div>
+                <div class="screenshot">شاشة التقارير والإحصائيات</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><i class="fas fa-mobile"></i> تطبيق الهاتف المحمول</h2>
+            <p>تطبيق سهل وبسيط لإدارة مزرعتك، طلب المنتجات، ومتابعة كل شيء من هاتفك.</p>
+            
+            <h3><i class="fas fa-star"></i> ماذا يوفر لك التطبيق؟</h3>
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-tractor"></i>
+                    <h4>مراقبة المزرعة من الهاتف</h4>
+                    <p>اطمئن على نباتاتك وتحكم بها من أي مكان، مع رسائل تنبيه عند الحاجة.</p>
+                    <ul>
+                        <li>مراقبة الحرارة والرطوبة</li>
+                        <li>تشغيل وإيقاف الري</li>
+                        <li>تقارير مبسطة</li>
+                    </ul>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h4>طلب المنتجات أسبوعياً</h4>
+                    <p>اطلب خضروات طازجة كل أسبوع، مع إمكانية التغيير أو الإلغاء.</p>
+                    <ul>
+                        <li>طلبات أسبوعية أو شهرية</li>
+                        <li>تذكيرك بمواعيد الطلبات</li>
+                        <li>سجل بجميع طلباتك السابقة</li>
+                    </ul>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-headset"></i>
+                    <h4>متابعة الطلبات والمساعدة</h4>
+                    <p>تابع طلباتك وأي مشاكل، مع إمكانية التواصل معنا مباشرة.</p>
+                    <ul>
+                        <li>معرفة وصول طلبك</li>
+                        <li>طلب مساعدة فنية</li>
+                        <li>تواصل مع خدمة العملاء</li>
+                    </ul>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-store"></i>
+                    <h4>سوق إلكتروني</h4>
+                    <p>بيع واشتري المنتجات الزراعية مع إمكانية التقييم والدفع الآمن.</p>
+                    <ul>
+                        <li>تصفح المنتجات المتاحة</li>
+                        <li>قراءة تقييمات المشترين</li>
+                        <li>دفع آمن وسهل</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-images"></i> صور من التطبيق</h3>
+            <div class="screenshots">
+                <div class="screenshot">شاشة مراقبة المزرعة</div>
+                <div class="screenshot">شاشة طلب المنتجات</div>
+                <div class="screenshot">شاشة متابعة الطلبات</div>
+                <div class="screenshot">السوق الإلكتروني</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><i class="fas fa-code"></i> التقنيات المستخدمة</h2>
+            <p>نستخدم أحدث التقنيات لضمان أن النظام يعمل بسرعة وأمان.</p>
+            
+            <h3><i class="fas fa-desktop"></i> تقنيات الموقع الإلكتروني</h3>
+            <div class="tech-stack">
+                <span class="tech-item">HTML5</span>
+                <span class="tech-item">CSS3</span>
+                <span class="tech-item">JavaScript</span>
+                <span class="tech-item">React.js</span>
+                <span class="tech-item">Bootstrap</span>
+                <span class="tech-item">Chart.js</span>
+            </div>
+            
+            <h3><i class="fas fa-server"></i> تقنيات الخادم</h3>
+            <div class="tech-stack">
+                <span class="tech-item">Node.js</span>
+                <span class="tech-item">Express.js</span>
+                <span class="tech-item">MongoDB</span>
+                <span class="tech-item">Socket.io</span>
+                <span class="tech-item">JWT</span>
+                <span class="tech-item">RESTful APIs</span>
+            </div>
+            
+            <h3><i class="fas fa-mobile"></i> تقنيات تطبيق الهاتف</h3>
+            <div class="tech-stack">
+                <span class="tech-item">React Native</span>
+                <span class="tech-item">Redux</span>
+                <span class="tech-item">Firebase</span>
+                <span class="tech-item">APIs</span>
+            </div>
+        </section>
+
+        <!-- <section class="section">
+            <h2><i class="fas fa-road"></i> خطوات بناء النظام</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>الخطوة الأولى: التخطيط والتصميم</h3>
+                        <p>فهم احتياجاتك وتصميم النظام بناءً عليها</p>
+                        <ul>
+                            <li>فهم ما تريده من النظام</li>
+                            <li>تصميم الشاشات والصفحات</li>
+                            <li>تخطيط قاعدة البيانات</li>
+                            <li>وضع جدول زمني للعمل</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>الخطوة الثانية: بناء الموقع الإلكتروني</h3>
+                        <p>برمجة الموقع وربطه بأجهزة المزرعة</p>
+                        <ul>
+                            <li>برمجة صفحات الموقع</li>
+                            <li>إضافة الوظائف الأساسية</li>
+                            <li>ربط الموقع بأجهزة المراقبة</li>
+                            <li>اختبار عمل الموقع</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>الخطوة الثالثة: بناء تطبيق الهاتف</h3>
+                        <p>تطوير التطبيق بجميع ميزاته</p>
+                        <ul>
+                            <li>برمجة واجهة التطبيق</li>
+                            <li>إضافة الميزات الأساسية</li>
+                            <li>ربط التطبيق بالموقع</li>
+                            <li>اختبار التطبيق</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>الخطوة الرابعة: الربط والاختبار النهائي</h3>
+                        <p>ربط كل شيء معاً والتأكد من عمله بشكل صحيح</p>
+                        <ul>
+                            <li>ربط النظام كاملاً</li>
+                            <li>اختبار الأمان والسرعة</li>
+                            <li>اختبار سهولة الاستخدام</li>
+                            <li>إصلاح أي مشاكل</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>الخطوة الخامسة: النشر والدعم</h3>
+                        <p>تشغيل النظام وتوفير الدعم المستمر</p>
+                        <ul>
+                            <li>نشر النظام على الإنترنت</li>
+                            <li>رفع التطبيق على متاجر التطبيقات</li>
+                            <li>توفير المساعدة الفنية</li>
+                            <li>الصيانة والتحديثات</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- <section class="section">
+            <h2><i class="fas fa-handshake"></i> تواصل معنا</h2>
+            <p>هل أنت مهتم بهذا النظام؟ يرجى ملء النموذج وسنتواصل معك قريباً:</p>
+            
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">الاسم الكامل</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">البريد الإلكتروني</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف</label>
+                    <input type="tel" id="phone">
+                </div>
+                <div class="form-group">
+                    <label for="role">أنا</label>
+                    <select id="role">
+                        <option value="client">أريد أن أشتري النظام</option>
+                        <option value="developer">مطور/مصمم</option>
+                        <option value="investor">مستثمر</option>
+                        <option value="partner">شريك محتمل</option>
+                        <option value="other">آخر</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">رسالتك</label>
+                    <textarea id="message" rows="5" required></textarea>
+                </div>
+                <button type="submit"><i class="fas fa-paper-plane"></i> إرسال</button>
+            </form>
+        </section> -->
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <h3>نظام إدارة المزارع الذكية</h3>
+            <p>نظام سهل وذكي للزراعة المنزلية والتجارية</p>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <!-- <p>© 2023 نظام إدارة المزارع الذكية. جميع الحقوق محفوظة.</p> -->
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            const notification = document.getElementById('notification');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // إظهار الإشعار
+                    notification.classList.add('show');
+                    
+                    // إخفاء الإشعار بعد 3 ثوان
+                    setTimeout(function() {
+                        notification.classList.remove('show');
+                    }, 3000);
+                    
+                    // مسح النموذج
+                    contactForm.reset();
+                });
+            }
+            
+            // إضافة تأثيرات للعناصر عند التمرير
+            const features = document.querySelectorAll('.feature');
+            features.forEach(feature => {
+                feature.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                feature.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
