@@ -515,6 +515,88 @@
         .notification.show {
             transform: translateX(0);
         }
+        
+        .store-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .store-badge {
+            background: #333;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .priority-badge {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+        }
+        
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .roadmap-item {
+            background: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: var(--transition);
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        .roadmap-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .roadmap-item i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .inventory-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--dark-color);
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
@@ -527,157 +609,258 @@
             <i class="fas fa-seedling logo"></i>
             <h1>iRAMA - نظام إدارة المزارع الذكية </h1>
         </div>
-        <p class="subtitle">نظام سهل وذكي لزراعة النباتات في البيت والمزرعة الصغيرة - مع موقع إلكتروني وتطبيق هاتف</p>
+        <p class="subtitle">نظام متكامل لإدارة المزارع الذكية - من التحكم الآلي إلى التسويق والمبيعات - مع موقع إلكتروني وتطبيق هاتف</p>
     </header>
 
     <div class="container">
         <section class="section">
-            <h2><i class="fas fa-info-circle"></i> ما هو نظام إدارة المزارع الذكية؟</h2>
-            <p>هذا النظام يساعدك في زراعة النباتات في بيتك أو في مزرعتك الصغيرة بطريقة سهلة وذكية. يتكون من جزئين أساسيين:</p>
+            <h2><i class="fas fa-info-circle"></i> نظام iRAMA المتكامل</h2>
+            <p>نظام iRAMA هو منظومة متكاملة تدمج بين التحكم الآلي في الزراعة وإدارة المبيعات والتسويق، مصمم لخدمة المزارع المنزلية والتجارية على حد سواء.</p>
             
             <div class="features">
                 <div class="feature">
-                    <i class="fas fa-desktop"></i>
-                    <h4>موقع إلكتروني للمراقبة</h4>
-                    <p>يمكنك من خلاله مراقبة نباتاتك ومعرفة حالتها من أي مكان عبر الإنترنت.</p>
+                    <i class="fas fa-cogs"></i>
+                    <h4>نظام التحكم الآلي <span class="priority-badge">الأولوية</span></h4>
+                    <p>إكمال نظام التحكم الحالي أو دمج حلول موجودة في السوق للتحكم الآلي في المزارع.</p>
                     <ul>
-                        <li>مشاهدة حالة النباتات فوراً</li>
-                        <li>تقارير مبسطة وسهلة الفهم</li>
-                        <li>إعدادات بسيطة</li>
+                        <li>مراقبة المحاصيل والظروف البيئية</li>
+                        <li>التحكم الآلي في الري والإضاءة</li>
+                        <li>إعدادات مخصصة لكل نوع نبات</li>
                     </ul>
                 </div>
                 <div class="feature">
-                    <i class="fas fa-mobile-alt"></i>
-                    <h4>تطبيق الهاتف المحمول</h4>
-                    <p>تطبيق سهل الاستخدام لإدارة مزرعتك، طلب المنتجات، ومتابعة طلباتك.</p>
+                    <i class="fas fa-shopping-cart"></i>
+                    <h4>سوق إلكتروني متكامل <span class="priority-badge">الأولوية</span></h4>
+                    <p>منصة شاملة لبيع منتجات iRAMA والاشتراكات والدعم الفني.</p>
                     <ul>
-                        <li>سهل الاستخدام على الهاتف</li>
-                        <li>تنبيهات فورية</li>
-                        <li>متوفر باللغة العربية</li>
+                        <li>بيع وحدات Home Unit وHyper Farm</li>
+                        <li>بيع القطع والاشتراكات</li>
+                        <li>دعم فني متكامل</li>
+                    </ul>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-warehouse"></i>
+                    <h4>نظام الجرد والمخزون</h4>
+                    <p>نظام متكامل لإدارة المبيعات والمخزون في نقاط البيع (الدانوب، اللولو، سوق الربوة).</p>
+                    <ul>
+                        <li>تتبع المبيعات والمخزون</li>
+                        <li>ربط محاسبي وضريبي</li>
+                        <li>إدارة صلاحيات الموظفين</li>
                     </ul>
                 </div>
             </div>
-            
-            <h3><i class="fas fa-bullseye"></i> لماذا نحتاج هذا النظام؟</h3>
-            <ul>
-                <li>يجعل زراعة النباتات في البيت أسهل</li>
-                <li>يساعدك في الحصول على محصول أكبر وأفضل</li>
-                <li>يوفر عليك الوقت والجهد</li>
-                <li>يربطك مباشرة بالعملاء لبيع منتجاتك</li>
-            </ul>
         </section>
 
         <section class="section">
-            <h2><i class="fas fa-tachometer-alt"></i> الموقع الإلكتروني للمراقبة</h2>
-            <p>موقع سهل يساعدك في مراقبة نباتاتك ومزرعتك من أي مكان ووقت.</p>
+            <h2><i class="fas fa-tachometer-alt"></i> نظام التحكم الآلي (المرحلة الأولى)</h2>
+            <p>نسعى لإكمال نظام التحكم الحالي أو دمج حلول متقدمة موجودة في السوق لتوفير أفضل تجربة للمستخدم.</p>
             
-            <h3><i class="fas fa-cogs"></i> ماذا يمكنك أن تفعل؟</h3>
+            <h3><i class="fas fa-cogs"></i> خيارات التطوير</h3>
             <div class="features">
                 <div class="feature">
-                    <i class="fas fa-chart-line"></i>
-                    <h4>مراقبة النباتات</h4>
-                    <p>مشاهدة حالة نباتاتك والجو المحيط بها مثل درجة الحرارة والرطوبة.</p>
+                    <i class="fas fa-code"></i>
+                    <h4>إكمال النظام الحالي</h4>
+                    <p>مواصلة تطوير نظام التحكم الحالي الذي بدأته مع آدم.</p>
+                    <ul>
+                        <li>الاستفادة من العمل الحالي</li>
+                        <li>تطوير واجهات مستخدم محسنة</li>
+                        <li>إضافة ميزات جديدة</li>
+                    </ul>
                 </div>
                 <div class="feature">
-                    <i class="fas fa-sliders-h"></i>
-                    <h4>التحكم في الري والإضاءة</h4>
-                    <p>تشغيل وإيقاف الري والإضاءة تلقائياً أو حسب رغبتك.</p>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-calendar"></i>
-                    <h4>جدولة أعمال الزراعة</h4>
-                    <p>تذكيرك بمواعيد الزراعة والحصاد وأعمال العناية بالنباتات.</p>
+                    <i class="fas fa-shopping-bag"></i>
+                    <h4>دمج حلول السوق</h4>
+                    <p>استخدام حلول جاهزة من شركات متخصصة مثل Overgrow وغيرها.</p>
+                    <ul>
+                        <li>توفير الوقت والجهد</li>
+                        <li>الاستفادة من حلول مجربة</li>
+                        <li>تركيز الجهود على التكامل</li>
+                    </ul>
                 </div>
             </div>
             
-            <div class="features">
-                <div class="feature">
-                    <i class="fas fa-chart-pie"></i>
-                    <h4>تقارير بسيطة</h4>
-                    <p>معرفة كم حصلت من المحصول وكيف تحسن نتائجك.</p>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-cog"></i>
-                    <h4>إعدادات مختلفة للنباتات</h4>
-                    <p>كل نوع نبات له إعدادات خاصة، والنظام يحفظها لك.</p>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-bell"></i>
-                    <h4>تنبيهات مهمة</h4>
-                    <p>رسائل تنبهك عندما تحتاج النباتات لعناية أو عند وجود مشكلة.</p>
-                </div>
-            </div>
-            
-            <h3><i class="fas fa-laptop"></i> صور من الموقع</h3>
+            <h3><i class="fas fa-laptop"></i> مميزات نظام التحكم</h3>
             <div class="screenshots">
-                <div class="screenshot">شاشة مراقبة النباتات المنزلية</div>
-                <div class="screenshot">شاشة التحكم في المزرعة التجارية</div>
-                <div class="screenshot">شاشة التقارير والإحصائيات</div>
+                <div class="screenshot">لوحة التحكم الرئيسية</div>
+                <div class="screenshot">مراقبة الظروف البيئية</div>
+                <div class="screenshot">التحكم في الري والإضاءة</div>
             </div>
         </section>
 
         <section class="section">
-            <h2><i class="fas fa-mobile"></i> تطبيق الهاتف المحمول</h2>
-            <p>تطبيق سهل وبسيط لإدارة مزرعتك، طلب المنتجات، ومتابعة كل شيء من هاتفك.</p>
+            <h2><i class="fas fa-store"></i> السوق الإلكتروني iRAMA (المرحلة الثانية) <span class="priority-badge">الأولوية</span></h2>
+            <p>منصة متكاملة تتيح للمستخدمين شراء منتجات iRAMA وقطع الغيار والاشتراكات، مع دعم فني متكامل.</p>
             
-            <h3><i class="fas fa-star"></i> ماذا يوفر لك التطبيق؟</h3>
+            <h3><i class="fas fa-shopping-basket"></i> أقسام السوق الإلكتروني</h3>
             <div class="features">
                 <div class="feature">
-                    <i class="fas fa-tractor"></i>
-                    <h4>مراقبة المزرعة من الهاتف</h4>
-                    <p>اطمئن على نباتاتك وتحكم بها من أي مكان، مع رسائل تنبيه عند الحاجة.</p>
+                    <i class="fas fa-home"></i>
+                    <h4>وحدات Home Unit وHyper Farm</h4>
+                    <p>بيع مختلف موديلات وحدات الزراعة المنزلية والتجارية.</p>
                     <ul>
-                        <li>مراقبة الحرارة والرطوبة</li>
-                        <li>تشغيل وإيقاف الري</li>
-                        <li>تقارير مبسطة</li>
+                        <li>وحدات Home Unit للمنازل</li>
+                        <li>وحدات Hyper Farm للمتاجر الكبرى</li>
+                        <li>وحدات Super Farm للمزارع الكبيرة</li>
                     </ul>
                 </div>
                 <div class="feature">
-                    <i class="fas fa-calendar-alt"></i>
-                    <h4>طلب المنتجات أسبوعياً</h4>
-                    <p>اطلب خضروات طازجة كل أسبوع، مع إمكانية التغيير أو الإلغاء.</p>
+                    <i class="fas fa-cogs"></i>
+                    <h4>قطع الغيار والإكسسوارات</h4>
+                    <p>توفير جميع القطع والمواد اللازمة للصيانة والتشغيل.</p>
                     <ul>
-                        <li>طلبات أسبوعية أو شهرية</li>
-                        <li>تذكيرك بمواعيد الطلبات</li>
-                        <li>سجل بجميع طلباتك السابقة</li>
+                        <li>قطع غيار أصلية</li>
+                        <li>مواد زراعية</li>
+                        <li>إكسسوارات تحسين الأداء</li>
+                    </ul>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-calendar-check"></i>
+                    <h4>الاشتراكات الشهرية</h4>
+                    <p>اشتراكات مخصصة لتوفير البذور والمستلزمات بشكل دوري.</p>
+                    <ul>
+                        <li>اشتراكات أسبوعية أو شهرية</li>
+                        <li>تخصيص حسب احتياجات العائلة</li>
+                        <li>تذكير وتحديث تلقائي</li>
                     </ul>
                 </div>
                 <div class="feature">
                     <i class="fas fa-headset"></i>
-                    <h4>متابعة الطلبات والمساعدة</h4>
-                    <p>تابع طلباتك وأي مشاكل، مع إمكانية التواصل معنا مباشرة.</p>
+                    <h4>الدعم الفني والاستشارات</h4>
+                    <p>دعم فني متكامل وخدمات استشارية للمزارعين.</p>
                     <ul>
-                        <li>معرفة وصول طلبك</li>
-                        <li>طلب مساعدة فنية</li>
-                        <li>تواصل مع خدمة العملاء</li>
-                    </ul>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-store"></i>
-                    <h4>سوق إلكتروني</h4>
-                    <p>بيع واشتري المنتجات الزراعية مع إمكانية التقييم والدفع الآمن.</p>
-                    <ul>
-                        <li>تصفح المنتجات المتاحة</li>
-                        <li>قراءة تقييمات المشترين</li>
-                        <li>دفع آمن وسهل</li>
+                        <li>دعم فني عن بعد</li>
+                        <li>استشارات زراعية متخصصة</li>
+                        <li>صيانة وتركيب</li>
                     </ul>
                 </div>
             </div>
             
-            <h3><i class="fas fa-images"></i> صور من التطبيق</h3>
-            <div class="screenshots">
-                <div class="screenshot">شاشة مراقبة المزرعة</div>
-                <div class="screenshot">شاشة طلب المنتجات</div>
-                <div class="screenshot">شاشة متابعة الطلبات</div>
-                <div class="screenshot">السوق الإلكتروني</div>
+            <h3><i class="fas fa-mobile-alt"></i> التحكم عن بعد</h3>
+            <p>إمكانية التحكم في أي جهاز iRAMA عن بعد من خلال النظام، مع إمكانية التشخيص والصيانة عن بعد.</p>
+            
+            <div class="store-badges">
+                <div class="store-badge"><i class="fab fa-google-play"></i> Google Play</div>
+                <div class="store-badge"><i class="fab fa-apple"></i> App Store</div>
+                <div class="store-badge"><i class="fas fa-globe"></i> Web App</div>
             </div>
         </section>
 
         <section class="section">
-            <h2><i class="fas fa-code"></i> التقنيات المستخدمة</h2>
-            <p>نستخدم أحدث التقنيات لضمان أن النظام يعمل بسرعة وأمان.</p>
+            <h2><i class="fas fa-warehouse"></i> نظام الجرد والمخزون (Riwa)</h2>
+            <p>نظام متكامل لإدارة المبيعات والمخزون في نقاط البيع المختلفة (الدانوب، اللولو، سوق الربوة).</p>
             
-            <h3><i class="fas fa-desktop"></i> تقنيات الموقع الإلكتروني</h3>
+            <h3><i class="fas fa-chart-line"></i> إحصائيات المبيعات الحالية</h3>
+            <div class="inventory-stats">
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">نقاط بيع</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">+1000</div>
+                    <div class="stat-label">نبات مباع شهرياً</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">?</div>
+                    <div class="stat-label">إجمالي المبيعات (غير معروف حالياً)</div>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-tasks"></i> مميزات نظام Riwa</h3>
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-boxes"></i>
+                    <h4>إدارة المخزون</h4>
+                    <p>تتبع المخزون بشكل دقيق في جميع نقاط البيع.</p>
+                    <ul>
+                        <li>تحديث فوري للكميات</li>
+                        <li>تنبيهات نفاذ المخزون</li>
+                        <li>إدارة الطلبات والموردين</li>
+                    </ul>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-cash-register"></i>
+                    <h4>إدارة المبيعات</h4>
+                    <p>تسجيل المبيعات وتحليلها بشكل مفصل.</p>
+                    <ul>
+                        <li>تقارير مبيعات يومية وأسبوعية</li>
+                        <li>تحليل أداء المنتجات</li>
+                        <li>مقارنة أداء نقاط البيع</li>
+                    </ul>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-user-tie"></i>
+                    <h4>إدارة الموظفين</h4>
+                    <p>نظام صلاحيات متكامل لإدارة فريق العمل.</p>
+                    <ul>
+                        <li>تحديد صلاحيات لكل موظف</li>
+                        <li>تتبع أداء الموظفين</li>
+                        <li>نظام حضور وانصراف</li>
+                    </ul>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-receipt"></i>
+                    <h4>المحاسبة والضرائب</h4>
+                    <p>ربط محاسبي كامل مع نظام الضرائب.</p>
+                    <ul>
+                        <li>الفواتير الإلكترونية</li>
+                        <li>ربط مع هيئة الزكاة والضريبة</li>
+                        <li>تقارير مالية شاملة</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><i class="fas fa-road"></i> خارطة الطريق 2024-2026</h2>
+            <p>خطة عمل واضحة لإطلاق النظام بالكامل وتحقيق أهداف iRAMA في السوق المحلي والإقليمي.</p>
+            
+            <div class="roadmap-grid">
+                <div class="roadmap-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <h4>الربع الأول 2024</h4>
+                    <p>اتخاذ قرار بشأن نظام التحكم (التطوير أو الدمج)</p>
+                </div>
+                <div class="roadmap-item">
+                    <i class="fas fa-laptop-code"></i>
+                    <h4>الربع الثاني 2024</h4>
+                    <p>بدء تطوير السوق الإلكتروني وتطبيقات الهاتف</p>
+                </div>
+                <div class="roadmap-item">
+                    <i class="fas fa-cogs"></i>
+                    <h4>الربع الثالث 2024</h4>
+                    <p>تكامل نظام التحكم مع السوق الإلكتروني</p>
+                </div>
+                <div class="roadmap-item">
+                    <i class="fas fa-database"></i>
+                    <h4>الربع الرابع 2024</h4>
+                    <p>تطبيق نظام إدارة المخزون Riwa</p>
+                </div>
+                <div class="roadmap-item">
+                    <i class="fas fa-rocket"></i>
+                    <h4>النصف الأول 2025</h4>
+                    <p>اختبار النظام الشامل والتعديلات</p>
+                </div>
+                <div class="roadmap-item">
+                    <i class="fas fa-flag-checkered"></i>
+                    <h4>بداية 2026</h4>
+                    <p>الإطلاق الرسمي للنظام المتكامل</p>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-bullseye"></i> الأهداف الاستراتيجية</h3>
+            <ul>
+                <li>المنافسة مع كبرى الشركات مثل STC، SABIC، Aramco</li>
+                <li>التوسع في السوق السعودي والخليجي</li>
+                <li>تقديم حلول متكاملة للحكومة والقطاع الخاص</li>
+                <li>الريادة في تقنيات الزراعة الذكية بالشرق الأوسط</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2><i class="fas fa-code"></i> التقنيات المستخدمة</h2>
+            <p>نستخدم أحدث التقنيات لضمان أن النظام يعمل بسرعة وأمان وكفاءة عالية.</p>
+            
+            <h3><i class="fas fa-desktop"></i> تقنيات الواجهة الأمامية</h3>
             <div class="tech-stack">
                 <span class="tech-item">HTML5</span>
                 <span class="tech-item">CSS3</span>
@@ -687,94 +870,37 @@
                 <span class="tech-item">Chart.js</span>
             </div>
             
-            <h3><i class="fas fa-server"></i> تقنيات الخادم</h3>
+            <h3><i class="fas fa-server"></i> تقنيات الخادم وقواعد البيانات</h3>
             <div class="tech-stack">
                 <span class="tech-item">Node.js</span>
                 <span class="tech-item">Express.js</span>
                 <span class="tech-item">MongoDB</span>
+                <span class="tech-item">MySQL</span>
                 <span class="tech-item">Socket.io</span>
                 <span class="tech-item">JWT</span>
                 <span class="tech-item">RESTful APIs</span>
             </div>
             
-            <h3><i class="fas fa-mobile"></i> تقنيات تطبيق الهاتف</h3>
+            <h3><i class="fas fa-mobile"></i> تقنيات تطبيقات الهاتف</h3>
             <div class="tech-stack">
                 <span class="tech-item">React Native</span>
-                <span class="tech-item">Redux</span>
+                <span class="tech-item">Flutter</span>
                 <span class="tech-item">Firebase</span>
-                <span class="tech-item">APIs</span>
+                <span class="tech-item">Redux</span>
+            </div>
+            
+            <h3><i class="fas fa-cloud"></i> تقنيات السحابة والأمان</h3>
+            <div class="tech-stack">
+                <span class="tech-item">AWS</span>
+                <span class="tech-item">Docker</span>
+                <span class="tech-item">SSL/TLS</span>
+                <span class="tech-item">OAuth 2.0</span>
             </div>
         </section>
 
-        <!-- <section class="section">
-            <h2><i class="fas fa-road"></i> خطوات بناء النظام</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>الخطوة الأولى: التخطيط والتصميم</h3>
-                        <p>فهم احتياجاتك وتصميم النظام بناءً عليها</p>
-                        <ul>
-                            <li>فهم ما تريده من النظام</li>
-                            <li>تصميم الشاشات والصفحات</li>
-                            <li>تخطيط قاعدة البيانات</li>
-                            <li>وضع جدول زمني للعمل</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>الخطوة الثانية: بناء الموقع الإلكتروني</h3>
-                        <p>برمجة الموقع وربطه بأجهزة المزرعة</p>
-                        <ul>
-                            <li>برمجة صفحات الموقع</li>
-                            <li>إضافة الوظائف الأساسية</li>
-                            <li>ربط الموقع بأجهزة المراقبة</li>
-                            <li>اختبار عمل الموقع</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>الخطوة الثالثة: بناء تطبيق الهاتف</h3>
-                        <p>تطوير التطبيق بجميع ميزاته</p>
-                        <ul>
-                            <li>برمجة واجهة التطبيق</li>
-                            <li>إضافة الميزات الأساسية</li>
-                            <li>ربط التطبيق بالموقع</li>
-                            <li>اختبار التطبيق</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>الخطوة الرابعة: الربط والاختبار النهائي</h3>
-                        <p>ربط كل شيء معاً والتأكد من عمله بشكل صحيح</p>
-                        <ul>
-                            <li>ربط النظام كاملاً</li>
-                            <li>اختبار الأمان والسرعة</li>
-                            <li>اختبار سهولة الاستخدام</li>
-                            <li>إصلاح أي مشاكل</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>الخطوة الخامسة: النشر والدعم</h3>
-                        <p>تشغيل النظام وتوفير الدعم المستمر</p>
-                        <ul>
-                            <li>نشر النظام على الإنترنت</li>
-                            <li>رفع التطبيق على متاجر التطبيقات</li>
-                            <li>توفير المساعدة الفنية</li>
-                            <li>الصيانة والتحديثات</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-
-        <!-- <section class="section">
+        <section class="section">
             <h2><i class="fas fa-handshake"></i> تواصل معنا</h2>
-            <p>هل أنت مهتم بهذا النظام؟ يرجى ملء النموذج وسنتواصل معك قريباً:</p>
+            <p>هل أنت مهتم بأن تكون جزءاً من رحلة iRAMA؟ يرجى ملء النموذج وسنتواصل معك قريباً:</p>
             
             <form class="contact-form" id="contactForm">
                 <div class="form-group">
@@ -790,28 +916,28 @@
                     <input type="tel" id="phone">
                 </div>
                 <div class="form-group">
-                    <label for="role">أنا</label>
+                    <label for="role">أنا مهتم بـ</label>
                     <select id="role">
-                        <option value="client">أريد أن أشتري النظام</option>
-                        <option value="developer">مطور/مصمم</option>
-                        <option value="investor">مستثمر</option>
-                        <option value="partner">شريك محتمل</option>
+                        <option value="control-system">نظام التحكم الآلي</option>
+                        <option value="marketplace">السوق الإلكتروني</option>
+                        <option value="inventory">نظام الجرد والمخزون</option>
+                        <option value="partnership">شراكة أو استثمار</option>
                         <option value="other">آخر</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="message">رسالتك</label>
+                    <label for="message">رسالتك أو استفسارك</label>
                     <textarea id="message" rows="5" required></textarea>
                 </div>
                 <button type="submit"><i class="fas fa-paper-plane"></i> إرسال</button>
             </form>
-        </section> -->
+        </section>
     </div>
 
     <footer>
         <div class="footer-content">
-            <h3>نظام إدارة المزارع الذكية</h3>
-            <p>نظام سهل وذكي للزراعة المنزلية والتجارية</p>
+            <h3>iRAMA - نظام إدارة المزارع الذكية</h3>
+            <p>من التحكم الآلي إلى التسويق والمبيعات - نظام متكامل للزراعة الذكية</p>
             
             <div class="social-links">
                 <a href="#"><i class="fab fa-twitter"></i></a>
